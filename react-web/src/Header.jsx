@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Header.css';
 
-const Header = () => {
+
+const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp }) => {
   const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {
@@ -32,8 +33,17 @@ const Header = () => {
         </form>
       </div>
       <div className="header-right">
-        <a href="/signin" className="auth-btn">Sign In</a>
-        <a href="/signup" className="auth-btn signup">Sign Up</a>
+        {user ? (
+          <>
+            <span style={{color:'#fff', marginRight:12}}>Hi, {user}</span>
+            <button className="auth-btn" onClick={onSignOut}>Sign Out</button>
+          </>
+        ) : (
+          <>
+            <button className="auth-btn" onClick={onShowSignIn}>Sign In</button>
+            <button className="auth-btn signup" onClick={onShowSignUp}>Sign Up</button>
+          </>
+        )}
       </div>
     </header>
   );

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import './SignAuth.css';
 
-const SignIn = () => {
-  const [email, setEmail] = useState('');
+
+const SignIn = ({ onSignIn, onClose }) => {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert(`Sign In\nEmail: ${email}\nPassword: ${password}`);
+    const err = onSignIn(username, password);
+    if (err) setError(err);
   };
 
   return (
@@ -15,10 +18,10 @@ const SignIn = () => {
       <h2>Sign In</h2>
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           required
         />
         <input
@@ -28,7 +31,9 @@ const SignIn = () => {
           onChange={e => setPassword(e.target.value)}
           required
         />
+        {error && <div className="auth-error">{error}</div>}
         <button type="submit">Sign In</button>
+        <button type="button" className="auth-btn" style={{marginTop:8}} onClick={onClose}>Cancel</button>
       </form>
     </div>
   );

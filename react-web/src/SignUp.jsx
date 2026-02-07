@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import './SignAuth.css';
 
-const SignUp = () => {
-  const [email, setEmail] = useState('');
+
+const SignUp = ({ onSignUp, onClose }) => {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
     if (password !== confirm) {
-      alert('Passwords do not match!');
+      setError('Lozinke se ne poklapaju!');
       return;
     }
-    alert(`Sign Up\nEmail: ${email}\nPassword: ${password}`);
+    const err = onSignUp(username, password);
+    if (err) setError(err);
   };
 
   return (
@@ -20,10 +23,10 @@ const SignUp = () => {
       <h2>Sign Up</h2>
       <form className="auth-form" onSubmit={handleSubmit}>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           required
         />
         <input
@@ -40,7 +43,9 @@ const SignUp = () => {
           onChange={e => setConfirm(e.target.value)}
           required
         />
+        {error && <div className="auth-error">{error}</div>}
         <button type="submit">Sign Up</button>
+        <button type="button" className="auth-btn" style={{marginTop:8}} onClick={onClose}>Cancel</button>
       </form>
     </div>
   );
