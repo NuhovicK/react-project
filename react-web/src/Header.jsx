@@ -2,55 +2,38 @@ import React, { useState } from 'react';
 import './Header.css';
 
 const Header = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
-  const [emailOpen, setEmailOpen] = useState(false);
-  const [addressOpen, setAddressOpen] = useState(false);
+  const [search, setSearch] = useState('');
 
-  const openMap = () => {
-    window.open('/map', '_blank');
+  const handleSearch = (e) => {
+    e.preventDefault();
+    alert(`Pretraga: ${search}`);
   };
 
   return (
     <header className="header">
       <div className="header-left">
-        <div className="dropdown">
-          <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-btn">Startup Menu ▼</button>
-          {dropdownOpen && (
-            <div className="dropdown-content">
-              <a href="/">Home</a>
-            </div>
-          )}
-        </div>
-        <div className="contact-menu">
-          <span
-            className="contact-btn"
-            onMouseEnter={() => setContactOpen(true)}
-            onMouseLeave={() => setContactOpen(false)}
-          >Contact</span>
-          {contactOpen && (
-            <div className="contact-dropdown">
-              <div
-                className="contact-item"
-                onMouseEnter={() => setEmailOpen(true)}
-                onMouseLeave={() => setEmailOpen(false)}
-              >
-                Phone
-                {emailOpen && <div className="contact-info">+123 456 789</div>}
-              </div>
-              <div
-                className="contact-item"
-                onMouseEnter={() => setAddressOpen(true)}
-                onMouseLeave={() => setAddressOpen(false)}
-              >
-                Email
-                {addressOpen && <div className="contact-info">mail@example.com</div>}
-              </div>
-              <div className="contact-item">Address<div className="contact-info">Random Address 123, City</div></div>
-            </div>
-          )}
-        </div>
-        <button className="map-btn" onClick={openMap}>Open Map</button>
+        <a href="/" className="nav-link">Home</a>
+        <a href="#contact" className="nav-link">Contact</a>
+        <a href="#community" className="nav-link">Community</a>
+        <a href="#blog" className="nav-link">Blog</a>
+      </div>
+      <div className="header-center">
+        <form className="search-form" onSubmit={handleSearch}>
+          <div className="search-bar">
+            <span className="search-icon" role="img" aria-label="search">🔍</span>
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+            />
+          </div>
+        </form>
+      </div>
+      <div className="header-right">
+        <a href="/signin" className="auth-btn">Sign In</a>
+        <a href="/signup" className="auth-btn signup">Sign Up</a>
       </div>
     </header>
   );

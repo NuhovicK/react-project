@@ -3,9 +3,11 @@ import Header from './Header';
 
 function App() {
   return (
-    <div>
+    <div style={{background:'#23272a', minHeight:'100vh'}}>
       <Header />
-      {/* Ovde možeš dodati ostale komponente */}
+      <div style={{color:'#fff', textAlign:'center', marginTop:'60px'}}>
+        <h1>Dobrodošao!</h1>
+      </div>
     </div>
   );
 }
