@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -6,20 +6,28 @@ import './SignAuth.css';
 
 function App() {
   // const [page, setPage] = useState('home');
-  const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([{ username: 'admin', password: 'admin' }]);
+  const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem('loggedUser');
+    return saved ? JSON.parse(saved) : null;
+  });
+  const [users, setUsers] = useState(() => {
+    const saved = localStorage.getItem('users');
+    return saved ? JSON.parse(saved) : [{ username: 'admin', password: 'admin' }];
+  });
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
 
   const handleSignIn = (username, password) => {
     if (username === 'admin' && password === 'admin') {
       setUser(username);
+      localStorage.setItem('loggedUser', JSON.stringify(username));
       setShowSignIn(false);
       return true;
     }
     const found = users.find(u => u.username === username && u.password === password);
     if (found) {
       setUser(username);
+      localStorage.setItem('loggedUser', JSON.stringify(username));
       setShowSignIn(false);
       return true;
     }
@@ -30,12 +38,20 @@ function App() {
     if (users.find(u => u.username === username)) {
       return false;
     }
-    setUsers([...users, { username, password }]);
+    const newUsers = [...users, { username, password }];
+    setUsers(newUsers);
+    localStorage.setItem('users', JSON.stringify(newUsers));
     setShowSignUp(false);
     setShowSignIn(true);
     return true;
   };
 
+
+  useEffect(() => {
+    if (user === null) {
+      localStorage.removeItem('loggedUser');
+    }
+  }, [user]);
 
   if (!user) {
     return (
