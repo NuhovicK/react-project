@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
 import './SignAuth.css';
 import SignAuth from './SignAuth';
+import Contact from './Contact';
+import Footer from './Footer';
 
 function App() {
-  // const [page, setPage] = useState('home');
+  const [page, setPage] = useState('home');
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('loggedUser');
     return saved ? JSON.parse(saved) : null;
@@ -15,8 +15,8 @@ function App() {
     const saved = localStorage.getItem('users');
     return saved ? JSON.parse(saved) : [{ username: 'admin', password: 'admin' }];
   });
-  const [SignIn, setShowSignIn] = useState(false);
-  const [SignUp, setShowSignUp] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
 
   const handleSignIn = (username, password) => {
     if (username === 'admin' && password === 'admin') {
@@ -75,10 +75,14 @@ function App() {
         onSignOut={() => setUser(null)}
         onShowSignIn={() => { setShowSignIn(true); setShowSignUp(false); }}
         onShowSignUp={() => { setShowSignUp(true); setShowSignIn(false); }}
+        onNavigate={setPage}
       />
       <div className="modern-content">
-        <h1>Welcome, {user}!</h1>
+        {page === 'home' && <h1>Dobrodošli, {user}!</h1>}
+        {page === 'contact' && <Contact />}
+        {(page === 'community' || page === 'blog') && <h1>{page.charAt(0).toUpperCase() + page.slice(1)} sekcija uskoro!</h1>}
       </div>
+      <Footer onNavigate={setPage} />
     </div>
   );
 }

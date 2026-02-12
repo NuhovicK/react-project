@@ -1,32 +1,41 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ onNavigate }) => {
   return (
-    <footer className="footer">
+    <footer className="footer-container">
       <div className="footer-content">
-        <div className="footer-section about">
-          <h2>O Web Sajtu</h2>
-          <p>Ova web aplikacija je moderna platforma za online prodaju i informisanje, kreirana radi lakšeg pristupa korisnicima.</p>
+        <div className="footer-section">
+          <h3>O Nama</h3>
+          <p>Moderna platforma za sve vaše tehnološke potrebe. Kvalitet, pouzdanost i inovacija na jednom mestu.</p>
         </div>
-        <div className="footer-section company">
-          <h2>Random Firma</h2>
-          <p>Naziv: NovaTech Solutions<br/>Adresa: Ulica 1, Novi Pazar<br/>Telefon: +381 20 123 456<br/>Email: info@novatech.rs</p>
-        </div>
-        <div className="footer-section faq">
-          <h2>Pitanja</h2>
-          <ul>
-            <li>Kako se registrujem?</li>
-            <li>Kako mogu da kontaktiram podršku?</li>
-            <li>Da li je kupovina sigurna?</li>
+        
+        <div className="footer-section">
+          <h3>Brzi Linkovi</h3>
+          <ul className="footer-links">
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>Početna</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}>Kontakt</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('blog'); }}>Blog</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('community'); }}>Zajednica</a></li>
           </ul>
         </div>
-        <div className="footer-section map-link">
-          <a href="#map-section" className="map-btn">Mapa Novog Pazara</a>
+
+        <div className="footer-section">
+          <h3>Kontakt</h3>
+          <p>📍 Emina Redžepagića 47A, Novi Pazar</p>
+          <p>📞 +381 65 500 1615</p>
+          <p>✉️ kadirnuhovic8@gmail.com</p>
+        </div>
+
+        <div className="footer-section">
+          <h3>Pratite nas</h3>
+          <div className="social-links">
+            <a href="https://github.com/KadirNuhovic" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
       </div>
       <div className="footer-bottom">
-        &copy; 2026 NovaTech Solutions | Sva prava zadržana
+        <p>&copy; {new Date().getFullYear()} Kadir Nuhovic. Sva prava zadržana.</p>
       </div>
     </footer>
   );

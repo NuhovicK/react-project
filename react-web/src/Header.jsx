@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Header.css';
 
 
-const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp }) => {
+const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => {
   const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {
@@ -13,10 +13,10 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp }) => {
   return (
     <header className="header">
       <div className="header-left">
-        <a href="/" className="nav-link">Home</a>
-        <a href="#contact" className="nav-link">Contact</a>
-        <a href="#community" className="nav-link">Community</a>
-        <a href="#blog" className="nav-link">Blog</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="nav-link">Home</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('contact'); }} className="nav-link">Contact</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('community'); }} className="nav-link">Community</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('blog'); }} className="nav-link">Blog</a>
       </div>
       <div className="header-center">
         <form className="search-form" onSubmit={handleSearch}>
