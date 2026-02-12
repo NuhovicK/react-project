@@ -3,6 +3,7 @@ import Header from './Header';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import './SignAuth.css';
+import SignAuth from './SignAuth';
 
 function App() {
   // const [page, setPage] = useState('home');
@@ -14,8 +15,8 @@ function App() {
     const saved = localStorage.getItem('users');
     return saved ? JSON.parse(saved) : [{ username: 'admin', password: 'admin' }];
   });
-  const [showSignIn, setShowSignIn] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [SignIn, setShowSignIn] = useState(false);
+  const [SignUp, setShowSignUp] = useState(false);
 
   const handleSignIn = (username, password) => {
     if (username === 'admin' && password === 'admin') {
@@ -46,6 +47,11 @@ function App() {
     return true;
   };
 
+  const handleGuestLogin = () => {
+    setUser('Guest');
+    localStorage.setItem('loggedUser', JSON.stringify('Guest'));
+  };
+
 
   useEffect(() => {
     if (user === null) {
@@ -55,32 +61,11 @@ function App() {
 
   if (!user) {
     return (
-      <div className="modern-bg">
-        {(!showSignIn && !showSignUp) && (
-          <div className="modern-center">
-            <div className="modern-auth-btns">
-              <button className="auth-btn" onClick={() => { setShowSignIn(true); setShowSignUp(false); }}>Sign In</button>
-              <button className="auth-btn signup" onClick={() => { setShowSignUp(true); setShowSignIn(false); }}>Sign Up</button>
-            </div>
-          </div>
-        )}
-        {showSignIn && (
-          <SignIn onSignIn={(username, password) => {
-            if (!handleSignIn(username, password)) {
-              return 'Pogrešno korisničko ime ili lozinka!';
-            }
-            return null;
-          }} onClose={() => setShowSignIn(false)} />
-        )}
-        {showSignUp && (
-          <SignUp onSignUp={(username, password) => {
-            if (!handleSignUp(username, password)) {
-              return 'Korisničko ime već postoji!';
-            }
-            return null;
-          }} onClose={() => setShowSignUp(false)} />
-        )}
-      </div>
+      <SignAuth 
+        onSignIn={(u, p) => !handleSignIn(u, p) ? 'Pogrešno korisničko ime ili lozinka!' : null}
+        onSignUp={(u, p) => !handleSignUp(u, p) ? 'Korisničko ime već postoji!' : null}
+        onGuest={handleGuestLogin}
+      />
     );
   }
   return (

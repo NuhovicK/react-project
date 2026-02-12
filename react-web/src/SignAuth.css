@@ -21,11 +21,10 @@ body, html {
 
 .modern-auth-btns {
   display: flex;
-  gap: 24px;
-  background: rgba(35,39,42,0.98);
-  padding: 36px 40px;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 .modern-content {
@@ -53,55 +52,53 @@ body, html {
 @media (max-width: 700px) {
   .modern-content, .auth-container {
     padding: 24px 8px 18px 8px;
-    max-width: 98vw;
+    max-width: 95vw;
   }
   .modern-auth-btns {
-    padding: 18px 8px;
-    gap: 12px;
+    gap: 10px;
   }
 }
+
+/* Stilovi za toggle dugmad */
+.toggle-btn {
+  background: transparent;
+  border: 2px solid #f39c12;
+  color: #f39c12;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 140px;
+}
+
+.toggle-btn.active {
+  background: #f39c12;
+  color: #23272a;
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.4);
+  transform: scale(1.05);
+}
+
+.toggle-btn:hover:not(.active) {
+  background: rgba(243, 156, 18, 0.1);
+}
+
 .auth-container {
-  background: #23272a;
-  color: #fff;
-  padding: 40px 32px;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
-  max-width: 400px;
-  margin: 40px auto;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.auth-form input {
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  background: #36393f;
-  color: #fff;
-  font-size: 1.1rem;
-}
-
-
-.auth-container {
-  background: rgba(35, 39, 42, 0.98);
+  background: rgba(35, 39, 42, 0.95);
   color: #fff;
   padding: 48px 36px 36px 36px;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  border: 1px solid rgba(243, 156, 18, 0.3); /* Dodat border kao sto si trazio */
   max-width: 410px;
-  margin: 60px auto;
+  width: 100%;
+  margin: 20px;
   text-align: center;
   position: relative;
-  animation: fadeIn 0.7s cubic-bezier(.39,.575,.565,1.000);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
+  backdrop-filter: blur(5px);
+  animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .auth-container h2 {
@@ -121,17 +118,17 @@ body, html {
 .auth-form input {
   padding: 14px 16px;
   border-radius: 8px;
-  border: 1.5px solid #36393f;
-  background: #23272a;
+  border: 2px solid #36393f;
+  background: #2f3136;
   color: #fff;
-  font-size: 1.13rem;
-  transition: border 0.2s;
-  box-shadow: 0 1.5px 8px 0 rgba(0,0,0,0.08);
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+
 .auth-form input:focus {
   outline: none;
-  border: 1.5px solid #f39c12;
-  background: #23272a;
+  border-color: #f39c12;
+  box-shadow: 0 0 8px rgba(243, 156, 18, 0.2);
 }
 
 .auth-form button[type="submit"] {
@@ -140,16 +137,17 @@ body, html {
   border: none;
   padding: 13px 0;
   border-radius: 8px;
-  font-size: 1.13rem;
+  font-size: 1.1rem;
   cursor: pointer;
   font-weight: 700;
-  letter-spacing: 0.7px;
-  box-shadow: 0 1.5px 8px 0 rgba(0,0,0,0.10);
-  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .auth-form button[type="submit"]:hover {
-  background: linear-gradient(90deg, #e67e22 0%, #f39c12 100%);
   transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
 }
 
 .auth-form .auth-btn {
@@ -175,4 +173,67 @@ body, html {
   margin-bottom: -10px;
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+/* Animacije */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeInForm 0.4s ease-in-out;
+}
+
+@keyframes fadeInForm {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Guest Section Styles */
+.guest-section {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #72767d;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #4f545c;
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+.guest-btn {
+  background: transparent;
+  border: 2px solid #4f545c;
+  color: #b9bbbe;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.guest-btn:hover {
+  border-color: #f39c12;
+  color: #f39c12;
+  background: rgba(243, 156, 18, 0.05);
+  transform: translateY(-2px);
 }
