@@ -1,0 +1,110 @@
+.about-section {
+  padding: 60px 20px;
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-in;
+}
+
+.about-container h1 {
+  text-align: center;
+  color: #f39c12;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.about-card, .cv-section {
+  background: rgba(35, 39, 42, 0.8);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.profile-card {
+  text-align: center;
+  border-top: 3px solid #f39c12;
+}
+
+.job-title {
+  color: #f39c12;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-desc {
+  color: #b9bbbe;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.github-link-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #f39c12;
+  color: #23272a;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.github-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+  background-color: #e67e22;
+}
+
+.cv-section h3 {
+  color: #e0e0e0;
+  border-bottom: 1px solid #4f545c;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.cv-item {
+  margin-bottom: 20px;
+}
+
+.cv-date {
+  color: #b9bbbe;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: #2f3136;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #f39c12;
+  font-size: 0.9rem;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.skill-tag:hover {
+  background: rgba(243, 156, 18, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -4,6 +4,7 @@ import './SignAuth.css';
 import SignAuth from './SignAuth';
 import Contact from './Contact';
 import Footer from './Footer';
+import About from './About';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -80,6 +81,7 @@ function App() {
       <div className="modern-content">
         {page === 'home' && <h1>Dobrodošli, {user}!</h1>}
         {page === 'contact' && <Contact />}
+        {page === 'about' && <About />}
         {(page === 'community' || page === 'blog') && <h1>{page.charAt(0).toUpperCase() + page.slice(1)} sekcija uskoro!</h1>}
       </div>
       <Footer onNavigate={setPage} />

@@ -14,6 +14,7 @@ const Footer = ({ onNavigate }) => {
           <h3>Brzi Linkovi</h3>
           <ul className="footer-links">
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>Početna</a></li>
+            <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('about'); }}>O Meni</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('contact'); }}>Kontakt</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('blog'); }}>Blog</a></li>
             <li><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('community'); }}>Zajednica</a></li>
