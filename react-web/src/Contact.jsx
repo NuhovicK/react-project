@@ -6,14 +6,14 @@ const Contact = () => {
     <div id="contact" className="contact-section">
       <div className="contact-container">
         <div className="contact-header">
-          <h2>Contact Information</h2>
+          <h2>Contact Information:</h2>
           
         </div>
 
         <div className="contact-grid">
           <div className="contact-card">
             <div className="icon">📍</div>
-            <h3>Address</h3>
+            <h3>Address:</h3>
             <p>Emina Redžepagića 47A</p>
             <p>36300 Novi Pazar</p>
           </div>
@@ -26,8 +26,8 @@ const Contact = () => {
 
           <div className="contact-card">
             <div className="icon">✉️</div>
-            <h3>Email</h3>
-            <p>kadirnuhovic4@gmail.com</p>
+            <h3>Email:</h3>
+            <p>kadirnuhovic8@gmail.com</p>
           </div>
 
           <div className="contact-card github-card">
