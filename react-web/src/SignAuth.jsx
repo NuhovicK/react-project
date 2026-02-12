@@ -17,7 +17,7 @@ const SignAuth = ({ onSignIn, onSignUp, onGuest }) => {
       if (err) setError(err);
     } else {
       if (password !== confirm) {
-        setError('Lozinke se ne poklapaju!');
+        setError('Passwords do not match!');
         return;
       }
       const err = onSignUp(username, password);
@@ -35,34 +35,34 @@ const SignAuth = ({ onSignIn, onSignUp, onGuest }) => {
             className={`toggle-btn ${isLogin ? 'active' : ''}`}
             onClick={() => { setIsLogin(true); setError(''); }}
           >
-            Prijavi se
+            Sign In
           </button>
           <button 
             className={`toggle-btn ${!isLogin ? 'active' : ''}`}
             onClick={() => { setIsLogin(false); setError(''); }}
           >
-            Registruj se
+            Sign Up
           </button>
         </div>
 
         <div className="auth-form-wrapper fade-in" key={isLogin ? 'login' : 'register'}>
-          <h2>{isLogin ? 'Dobrodošli nazad!' : 'Pridruži nam se'}</h2>
+          <h2>{isLogin ? 'Welcome Back!' : 'Join Us'}</h2>
           
           <form className="auth-form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Korisničko ime" value={username} onChange={e => setUsername(e.target.value)} required />
-            <input type="password" placeholder="Lozinka" value={password} onChange={e => setPassword(e.target.value)} required />
-            {!isLogin && <input type="password" placeholder="Potvrdi lozinku" value={confirm} onChange={e => setConfirm(e.target.value)} required />}
+            <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
+            {!isLogin && <input type="password" placeholder="Confirm Password" value={confirm} onChange={e => setConfirm(e.target.value)} required />}
             
             {error && <div className="auth-error">{error}</div>}
-            <button type="submit">{isLogin ? 'Prijavi se' : 'Registruj se'}</button>
+            <button type="submit">{isLogin ? 'Sign In' : 'Sign Up'}</button>
           </form>
 
           <div className="guest-section">
             <div className="divider">
-              <span>ili</span>
+              <span>or</span>
             </div>
             <button type="button" className="guest-btn" onClick={onGuest}>
-              Nastavi kao gost
+              Continue as Guest
             </button>
           </div>
         </div>

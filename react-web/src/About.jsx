@@ -5,40 +5,102 @@ const About = () => {
   return (
     <div className="about-section">
       <div className="about-container">
-        <h1>O Meni</h1>
+        <h1>About Me</h1>
         
         <div className="about-content">
-          {/* Osnovne informacije */}
+          {/* Basic Info */}
           <div className="about-card profile-card">
             <h2>Kadir Nuhovic</h2>
             <p className="job-title">Frontend Developer</p>
             <p className="profile-desc">
-              Programer fokusiran na moderne web tehnologije. 
-              Pogledajte moj rad i doprinose na GitHub-u.
+              Developer focused on frontend technologies. I have knowledge of HTML, CSS, JavaScript, and React, as well as
+              experience building personal projects and working effectively in team-oriented and organized environments.
             </p>
             <a href="https://github.com/KadirNuhovic" target="_blank" rel="noopener noreferrer" className="github-link-btn">
-              Poseti moj GitHub
+              Visit my GitHub
             </a>
           </div>
           
-          {/* Iskustvo */}
+          {/* Experience */}
           <div className="cv-section">
-            <h3>Radno Iskustvo</h3>
+            <h3>Work Experience</h3>
             <div className="cv-item">
-              <p>Kopiraj tekst svog CV-ja ovde u chat da bih popunio ovaj deo podacima.</p>
+              <h4>Physiotherapy Assistant / Technician</h4>
+              <p className="cv-place">Novo Pazarska Banja • Novi Pazar, Serbia</p>
+              <p className="cv-date">Sep 2023 – Jun 2025</p>
             </div>
           </div>
 
-          {/* Veštine */}
+          {/* Education */}
           <div className="cv-section">
-            <h3>Veštine</h3>
+            <h3>Education</h3>
+            <div className="cv-item">
+              <h4>Bachelor’s degree in Electrical Engineering and Computer Engineering</h4>
+              <p className="cv-place">Faculty of Technical Sciences • Kosovska Mitrovica</p>
+              <p className="cv-date">Oct 2025 – Present</p>
+            </div>
+            <div className="cv-item">
+              <h4>Physiotherapy Assistant / Technician</h4>
+              <p className="cv-place">Medical School ''Two Heroes'' • Novi Pazar, Serbia</p>
+              <p className="cv-date">Sep 2021 – Jun 2025</p>
+            </div>
+          </div>
+
+          {/* Certifications */}
+          <div className="cv-section">
+            <h3>Certifications</h3>
+            <div className="cv-item">
+              <h4>Certificate of Appreciation</h4>
+              <p className="cv-place">Center for Application of New and Innovative Technologies Novi Pazar</p>
+              <p>First cycle of IT Camp - Serbia 2023 - With knowledge of HTML and CSS.</p>
+            </div>
+            <div className="cv-item">
+              <h4>Certificate of Appreciation</h4>
+              <p className="cv-place">Center for Application of New and Innovative Technologies Novi Pazar</p>
+              <p>Second cycle of IT Camp - Serbia 2023 - With knowledge JavaScript.</p>
+            </div>
+            <div className="cv-item">
+              <h4>Certificate of Appreciation</h4>
+              <p className="cv-place">Center for Application of New and Innovative Technologies Novi Pazar</p>
+              <p>Third cycle of IT Camp - Serbia 2023 - With knowledge JavaScript and React.js.</p>
+            </div>
+          </div>
+
+          {/* Courses */}
+          <div className="cv-section">
+            <h3>Courses</h3>
+            <div className="cv-item">
+              <h4>Frontend JavaScript with AI</h4>
+              <p className="cv-place">IT Akademija Beograd</p>
+            </div>
+          </div>
+
+          {/* Projects */}
+          <div className="cv-section">
+            <h3>Projects</h3>
+            <div className="cv-item">
+              <h4>Građani se pitaju</h4>
+              <p className="cv-place">City of Novi Pazar • Novi Pazar, Serbia</p>
+            </div>
+          </div>
+
+          {/* Skills */}
+          <div className="cv-section">
+            <h3>Skills</h3>
             <div className="skills-grid">
-              <span className="skill-tag">React</span>
-              <span className="skill-tag">JavaScript</span>
-              <span className="skill-tag">CSS/HTML</span>
-              <span className="skill-tag">Git</span>
-              <span className="skill-tag">Frontend</span>
-              
+              <span className="skill-tag">CSS (Advanced)</span>
+              <span className="skill-tag">HTML (Advanced)</span>
+              <span className="skill-tag">JavaScript (Advanced)</span>
+              <span className="skill-tag">React (Advanced)</span>
+            </div>
+          </div>
+
+          {/* Languages */}
+          <div className="cv-section">
+            <h3>Languages</h3>
+            <div className="cv-item">
+              <p>English language (Advanced)</p>
+              <p>Serbian language (Native)</p>
             </div>
           </div>
         </div>

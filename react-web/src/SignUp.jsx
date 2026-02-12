@@ -11,7 +11,7 @@ const SignUp = ({ onSignUp, onClose }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (password !== confirm) {
-      setError('Lozinke se ne poklapaju!');
+      setError('Passwords do not match!');
       return;
     }
     const err = onSignUp(username, password);

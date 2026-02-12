@@ -6,21 +6,21 @@ const Contact = () => {
     <div id="contact" className="contact-section">
       <div className="contact-container">
         <div className="contact-header">
-          <h2>Kontakt Informacije</h2>
+          <h2>Contact Information</h2>
           
         </div>
 
         <div className="contact-grid">
           <div className="contact-card">
             <div className="icon">📍</div>
-            <h3>Adresa</h3>
+            <h3>Address</h3>
             <p>Emina Redžepagića 47A</p>
             <p>36300 Novi Pazar</p>
           </div>
 
           <div className="contact-card">
             <div className="icon">📞</div>
-            <h3>Telefon</h3>
+            <h3>Phone</h3>
             <p>+381 65 500 1615</p>
           </div>
 

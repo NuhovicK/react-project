@@ -16,8 +16,8 @@ function App() {
     const saved = localStorage.getItem('users');
     return saved ? JSON.parse(saved) : [{ username: 'admin', password: 'admin' }];
   });
-  const [showSignIn, setShowSignIn] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [SignIn, setShowSignIn] = useState(false);
+  const [SignUp, setShowSignUp] = useState(false);
 
   const handleSignIn = (username, password) => {
     if (username === 'admin' && password === 'admin') {
@@ -63,8 +63,8 @@ function App() {
   if (!user) {
     return (
       <SignAuth 
-        onSignIn={(u, p) => !handleSignIn(u, p) ? 'Pogrešno korisničko ime ili lozinka!' : null}
-        onSignUp={(u, p) => !handleSignUp(u, p) ? 'Korisničko ime već postoji!' : null}
+        onSignIn={(u, p) => !handleSignIn(u, p) ? 'Invalid username or password!' : null}
+        onSignUp={(u, p) => !handleSignUp(u, p) ? 'Username already exists!' : null}
         onGuest={handleGuestLogin}
       />
     );
@@ -79,10 +79,10 @@ function App() {
         onNavigate={setPage}
       />
       <div className="modern-content">
-        {page === 'home' && <h1>Dobrodošli, {user}!</h1>}
+        {page === 'home' && <h1>Welcome, {user}!</h1>}
         {page === 'contact' && <Contact />}
         {page === 'about' && <About />}
-        {(page === 'community' || page === 'blog') && <h1>{page.charAt(0).toUpperCase() + page.slice(1)} sekcija uskoro!</h1>}
+        {(page === 'community' || page === 'blog') && <h1>{page.charAt(0).toUpperCase() + page.slice(1)} section coming soon!</h1>}
       </div>
       <Footer onNavigate={setPage} />
     </div>

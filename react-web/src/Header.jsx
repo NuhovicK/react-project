@@ -7,14 +7,14 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => 
 
   const handleSearch = (e) => {
     e.preventDefault();
-    alert(`Pretraga: ${search}`);
+    alert(`Search: ${search}`);
   };
 
   return (
     <header className="header">
       <div className="header-left">
         <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="nav-link">Home</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('about'); }} className="nav-link">O Meni</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('about'); }} className="nav-link">About Me</a>
         <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('contact'); }} className="nav-link">Contact</a>
         <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('community'); }} className="nav-link">Community</a>
         <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('blog'); }} className="nav-link">Blog</a>
