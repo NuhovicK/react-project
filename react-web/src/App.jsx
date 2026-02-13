@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import './SignAuth.css';
+import './Theme.css'; // Importujemo temu
+import { translations } from './translations'; // Importujemo prevode
 import SignAuth from './SignAuth';
 import Contact from './Contact';
 import Footer from './Footer';
@@ -12,6 +14,8 @@ import AdminRoom from './AdminRoom';
 
 function App() {
   const [page, setPage] = useState('home');
+  const [lang, setLang] = useState('en'); // Default jezik
+  const [theme, setTheme] = useState('dark'); // Default tema
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('loggedUser');
     return saved ? JSON.parse(saved) : null;
@@ -22,6 +26,8 @@ function App() {
   });
   const [SignIn, setShowSignIn] = useState(false);
   const [SignUp, setShowSignUp] = useState(false);
+
+  const t = translations[lang]; // Trenutni prevodi
 
   // Podaci za postove su sada ovde (u App) da bi ih delili Community i AdminRoom
   const [posts, setPosts] = useState([
@@ -111,6 +117,11 @@ function App() {
     localStorage.setItem('loggedUser', JSON.stringify('Guest'));
   };
 
+  // Primeni temu na body element
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
 
   useEffect(() => {
     if (user === null) {
@@ -135,16 +146,21 @@ function App() {
         onShowSignIn={() => { setShowSignIn(true); setShowSignUp(false); }}
         onShowSignUp={() => { setShowSignUp(true); setShowSignIn(false); }}
         onNavigate={setPage}
+        lang={lang}
+        setLang={setLang}
+        theme={theme}
+        setTheme={setTheme}
+        t={t}
       />
       <div className="modern-content">
-        {page === 'home' && <Home onNavigate={setPage} />}
+        {page === 'home' && <Home onNavigate={setPage} t={t} />}
         {page === 'contact' && <Contact />}
         {page === 'about' && <About />}
-        {page === 'blog' && <Blog />}
-        {page === 'community' && <Community posts={posts} onAddPost={handleAddPost} />}
-        {page === 'admin' && <AdminRoom posts={posts} onAddPost={handleAddPost} onDeletePost={handleDeletePost} />}
+        {page === 'blog' && <Blog t={t} />}
+        {page === 'community' && <Community posts={posts} onAddPost={handleAddPost} t={t} />}
+        {page === 'admin' && <AdminRoom posts={posts} onAddPost={handleAddPost} onDeletePost={handleDeletePost} t={t} />}
       </div>
-      <Footer onNavigate={setPage} user={user} />
+      <Footer onNavigate={setPage} user={user} t={t} />
     </div>
   );
 }

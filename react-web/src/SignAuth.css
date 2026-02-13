@@ -24,13 +24,14 @@ html, body {
 
 .modern-bg {
   min-height: 100vh;
-  background: linear-gradient(135deg, #23272a 0%, #23272a 60%, #f39c12 100%);
+  background: var(--app-bg);
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
   position: relative;
+  transition: background 0.5s ease;
 }
 
 .modern-center {

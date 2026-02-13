@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AdminRoom.css';
 
-const AdminRoom = ({ posts, onAddPost, onDeletePost }) => {
+const AdminRoom = ({ posts, onAddPost, onDeletePost, t }) => {
   const [newPostContent, setNewPostContent] = useState("");
   const [newPostTitle, setNewPostTitle] = useState("");
 
@@ -10,7 +10,7 @@ const AdminRoom = ({ posts, onAddPost, onDeletePost }) => {
     if (!newPostContent.trim()) return;
     
     onAddPost({
-      title: newPostTitle || "Admin Announcement",
+      title: newPostTitle || "Admin",
       content: newPostContent
     });
     setNewPostContent("");
@@ -20,17 +20,17 @@ const AdminRoom = ({ posts, onAddPost, onDeletePost }) => {
   return (
     <div className="admin-room-container">
       <div className="admin-header">
-        <h1>🛡️ Admin Room</h1>
-        <p>Control panel for managing community content.</p>
+        <h1>{t.adminRoom}</h1>
+        <p>{t.adminPanel}</p>
       </div>
 
       {/* Forma za brzo dodavanje */}
       <div className="admin-controls">
-        <h3>Add New Post</h3>
+        <h3>{t.addNewPost}</h3>
         <form onSubmit={handleSubmit} className="admin-post-form">
           <input 
             type="text" 
-            placeholder="Title (optional)" 
+            placeholder={t.titleOptional} 
             value={newPostTitle}
             onChange={(e) => setNewPostTitle(e.target.value)}
             className="admin-input"
@@ -38,16 +38,16 @@ const AdminRoom = ({ posts, onAddPost, onDeletePost }) => {
           <textarea
             value={newPostContent}
             onChange={(e) => setNewPostContent(e.target.value)}
-            placeholder="Post content..."
+            placeholder={t.postContent}
             className="admin-textarea"
           />
-          <button type="submit" className="admin-add-btn">Post as Admin</button>
+          <button type="submit" className="admin-add-btn">{t.postAsAdmin}</button>
         </form>
       </div>
 
       {/* Lista postova za brisanje */}
       <div className="admin-posts-list">
-        <h3>Manage Posts ({posts.length})</h3>
+        <h3>{t.managePosts} ({posts.length})</h3>
         {posts.map(post => (
           <div key={post.id} className="admin-post-item">
             <div className="admin-post-info">
@@ -61,9 +61,9 @@ const AdminRoom = ({ posts, onAddPost, onDeletePost }) => {
             <button 
               className="admin-delete-btn"
               onClick={() => onDeletePost(post.id)}
-              title="Delete Post"
+              title={t.deletePost}
             >
-              🗑️ Delete
+              {t.delete}
             </button>
           </div>
         ))}

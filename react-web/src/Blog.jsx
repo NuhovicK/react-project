@@ -1,7 +1,7 @@
 import React from 'react';
 import './Blog.css';
 
-const Blog = () => {
+const Blog = ({ t }) => {
   // Simulirani podaci za blog postove
   const posts = [
     {
@@ -51,8 +51,8 @@ const Blog = () => {
   return (
     <div className="blog-section">
       <div className="blog-header">
-        <h1>Our Blog</h1>
-        <p>Latest news, tutorials, and stories from the world of technology.</p>
+        <h1>{t.ourBlog}</h1>
+        <p>{t.blogSubtitle}</p>
       </div>
       
       <div className="blog-grid">
@@ -67,7 +67,7 @@ const Blog = () => {
               <p>{post.excerpt}</p>
             </div>
             <div className="blog-card-footer">
-              <button className="read-more-btn">Read More</button>
+              <button className="read-more-btn">{t.readMore}</button>
             </div>
           </article>
         ))}

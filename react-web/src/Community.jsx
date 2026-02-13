@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; // useState nam treba samo za formu
 import './Community.css';
 
-const Community = ({ posts, onAddPost }) => {
+const Community = ({ posts, onAddPost, t }) => {
   const [newPost, setNewPost] = useState("");
 
   const handlePostSubmit = (e) => {
@@ -15,19 +15,19 @@ const Community = ({ posts, onAddPost }) => {
   return (
     <div className="community-container">
       <div className="community-header">
-        <h1>Community</h1>
-        <p>Connect, discuss, and share knowledge with other developers.</p>
+        <h1>{t.community}</h1>
+        <p>{t.connectDiscuss}</p>
       </div>
 
       <div className="create-post-section">
         <form onSubmit={handlePostSubmit} className="post-form">
           <textarea 
-            placeholder="What's on your mind today?" 
+            placeholder={t.whatsOnMind} 
             value={newPost}
             onChange={(e) => setNewPost(e.target.value)}
             className="post-input"
           />
-          <button type="submit" className="post-btn">Post</button>
+          <button type="submit" className="post-btn">{t.post}</button>
         </form>
       </div>
 

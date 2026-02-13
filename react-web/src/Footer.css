@@ -1,9 +1,9 @@
 .footer-container {
-  background-color: #1a1c1e;
-  color: #b9bbbe;
+  background-color: var(--footer-bg);
+  color: var(--text-secondary);
   padding: 60px 20px 20px;
   margin-top: auto;
-  border-top: 1px solid #2f3136;
+  border-top: 1px solid var(--border-color);
   width: 100%;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .footer-links a {
-  color: #b9bbbe;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -50,7 +50,7 @@
 
 .social-links a {
   display: inline-block;
-  background: #2f3136;
+  background: var(--input-bg);
   color: #fff;
   padding: 8px 15px;
   border-radius: 5px;
@@ -66,6 +66,6 @@
 .footer-bottom {
   text-align: center;
   padding-top: 20px;
-  border-top: 1px solid #2f3136;
+  border-top: 1px solid var(--border-color);
   font-size: 0.9rem;
 }

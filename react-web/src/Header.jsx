@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Header.css';
 
 
-const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => {
+const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate, lang, setLang, theme, setTheme, t }) => {
   const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {
@@ -28,11 +28,11 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => 
   return (
     <header className="header">
       <div className="header-left">
-        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="nav-link">Home</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('about'); }} className="nav-link">About Me</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('contact'); }} className="nav-link">Contact</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('community'); }} className="nav-link">Community</a>
-        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('blog'); }} className="nav-link">Blog</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="nav-link">{t.home}</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('about'); }} className="nav-link">{t.about}</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('contact'); }} className="nav-link">{t.contact}</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('community'); }} className="nav-link">{t.community}</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('blog'); }} className="nav-link">{t.blog}</a>
       </div>
       <div className="header-center">
         <form className="search-form" onSubmit={handleSearch}>
@@ -46,7 +46,7 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => 
             <input
               type="text"
               className="search-input"
-              placeholder="Search..."
+              placeholder={t.searchPlaceholder}
               value={search}
               onChange={e => setSearch(e.target.value)}
             />
@@ -54,15 +54,25 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => 
         </form>
       </div>
       <div className="header-right">
+        <select className="lang-select" value={lang} onChange={(e) => setLang(e.target.value)}>
+          <option value="en">🇺🇸 EN</option>
+          <option value="sr">🇷🇸 SR</option>
+          <option value="de">🇩🇪 DE</option>
+        </select>
+        
+        <button className="theme-toggle" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
+
         {user ? (
           <>
-            <span style={{color:'#fff', marginRight:12}}>Hi, {user}</span>
-            <button className="auth-btn" onClick={onSignOut}>Sign Out</button>
+            <span className="user-greeting">{t.hi}, {user}</span>
+            <button className="auth-btn" onClick={onSignOut}>{t.signOut}</button>
           </>
         ) : (
           <>
-            <button className="auth-btn" onClick={onShowSignIn}>Sign In</button>
-            <button className="auth-btn signup" onClick={onShowSignUp}>Sign Up</button>
+            <button className="auth-btn" onClick={onShowSignIn}>{t.signIn}</button>
+            <button className="auth-btn signup" onClick={onShowSignUp}>{t.signUp}</button>
           </>
         )}
       </div>

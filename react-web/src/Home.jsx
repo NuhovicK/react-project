@@ -1,23 +1,23 @@
 import React from 'react';
 import './Home.css';
 
-const Home = ({ onNavigate }) => {
+const Home = ({ onNavigate, t }) => {
   return (
     <div className="home-container">
       {/* Hero Sekcija - Glavni uvod */}
       <section className="hero-section">
         <h1 className="hero-title">
-          Welcome to <span className="highlight">Digital World</span>
+          {t.welcome} <span className="highlight">{t.digitalWorld}</span>
         </h1>
         <p className="hero-subtitle">
-          Explore the latest technologies, connect with the community, and discover amazing stories in one place.
+          {t.heroSubtitle}
         </p>
         <div className="hero-buttons">
           <button className="cta-btn primary" onClick={() => onNavigate('community')}>
-            Join Us
+            {t.joinUs}
           </button>
           <button className="cta-btn secondary" onClick={() => onNavigate('about')}>
-            Learn More
+            {t.learnMore}
           </button>
         </div>
       </section>
@@ -26,20 +26,20 @@ const Home = ({ onNavigate }) => {
       <section className="features-section">
         <div className="feature-card" onClick={() => onNavigate('blog')}>
           <div className="card-icon">🚀</div>
-          <h3>Latest Blog</h3>
-          <p>Follow trends and read the latest news from the tech world.</p>
+          <h3>{t.latestBlog}</h3>
+          <p>{t.latestBlogDesc}</p>
         </div>
 
         <div className="feature-card" onClick={() => onNavigate('community')}>
           <div className="card-icon">🤝</div>
-          <h3>Our Community</h3>
-          <p>Meet people with similar interests, share knowledge, and grow together.</p>
+          <h3>{t.ourCommunity}</h3>
+          <p>{t.ourCommunityDesc}</p>
         </div>
 
         <div className="feature-card" onClick={() => onNavigate('contact')}>
           <div className="card-icon">💡</div>
-          <h3>Have an Idea?</h3>
-          <p>We are here to listen. Contact us for collaboration or questions.</p>
+          <h3>{t.haveIdea}</h3>
+          <p>{t.haveIdeaDesc}</p>
         </div>
       </section>
     </div>

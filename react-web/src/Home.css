@@ -2,7 +2,7 @@
   padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  color: #fff;
+  color: var(--text-color);
   animation: fadeIn 0.8s ease-out;
 }
 
@@ -31,7 +31,7 @@
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: #b9bbbe;
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto 40px;
   line-height: 1.6;
@@ -77,7 +77,7 @@
 
 .cta-btn.secondary:hover {
   background: rgba(243, 156, 18, 0.1);
-  color: #fff;
+  color: var(--text-color);
 }
 
 /* --- Features Grid (Kartice) --- */
@@ -88,9 +88,9 @@
 }
 
 .feature-card {
-  background: rgba(255, 255, 255, 0.03); /* Veoma suptilna pozadina */
+  background: var(--card-bg); /* Veoma suptilna pozadina */
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
   padding: 40px 30px;
   border-radius: 24px;
   text-align: center;
@@ -135,14 +135,14 @@
 }
 
 .feature-card h3 {
-  color: #fff;
+  color: var(--text-color);
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
 .feature-card p {
-  color: #a0a0a0;
+  color: var(--text-secondary);
   line-height: 1.6;
   font-size: 1rem;
 }
