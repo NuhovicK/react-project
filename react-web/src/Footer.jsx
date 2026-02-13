@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = ({ onNavigate }) => {
+const Footer = ({ onNavigate, user }) => {
   return (
     <footer className="footer-container">
       <div className="footer-content">
@@ -37,6 +37,13 @@ const Footer = ({ onNavigate }) => {
       </div>
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Kadir Nuhovic. All rights reserved.</p>
+        {user === 'admin' && (
+          <div className="admin-link-container">
+            <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('admin'); }} className="admin-footer-link">
+              Admin Room 🛡️
+            </a>
+          </div>
+        )}
       </div>
     </footer>
   );

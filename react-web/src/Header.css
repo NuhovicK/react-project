@@ -43,23 +43,50 @@
  .search-bar {
   display: flex;
   align-items: center;
-  background: #36393f;
-  border-radius: 8px;
-  padding: 0 20px 0 10px;
-  width: 600px;
-  height: 54px;
+  background: rgba(255, 255, 255, 0.15); /* Glassmorphism pozadina */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 5px 15px;
+  width: 100%;
+  max-width: 500px;
+  height: 46px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
- .search-icon {
+
+.search-bar:hover,
+.search-bar:focus-within {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-icon-btn {
+  background: transparent; /* OVO REŠAVA PROBLEM - dugme postaje providno */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, color 0.3s;
+}
+
+.search-icon-btn:hover {
+  transform: scale(1.1);
   color: #fff;
-  font-size: 1.7rem;
-  margin-right: 16px;
 }
  .search-input {
   background: transparent;
   border: none;
   outline: none;
   color: #fff;
-  font-size: 1.15rem;
+  font-size: 1rem;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -140,9 +167,8 @@
     height: 36px;
     padding: 0 4px 0 4px;
   }
-  .search-icon {
-    font-size: 1.1rem;
-    margin-right: 6px;
+  .search-icon-btn {
+    margin-right: 4px;
   }
   .search-input {
     font-size: 0.95rem;

@@ -7,7 +7,22 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => 
 
   const handleSearch = (e) => {
     e.preventDefault();
-    alert(`Search: ${search}`);
+    const term = search.toLowerCase().trim();
+    const routes = {
+      'home': 'home',
+      'about': 'about',
+      'about me': 'about',
+      'contact': 'contact',
+      'community': 'community',
+      'blog': 'blog'
+    };
+
+    if (routes[term]) {
+      onNavigate(routes[term]);
+      setSearch('');
+    } else {
+      alert(`Search: ${search}`);
+    }
   };
 
   return (
@@ -22,7 +37,12 @@ const Header = ({ user, onSignOut, onShowSignIn, onShowSignUp, onNavigate }) => 
       <div className="header-center">
         <form className="search-form" onSubmit={handleSearch}>
           <div className="search-bar">
-            <span className="search-icon" role="img" aria-label="search">🔍</span>
+            <button type="submit" className="search-icon-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
             <input
               type="text"
               className="search-input"

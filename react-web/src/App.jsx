@@ -5,6 +5,10 @@ import SignAuth from './SignAuth';
 import Contact from './Contact';
 import Footer from './Footer';
 import About from './About';
+import Blog from './Blog';
+import Home from './Home';
+import Community from './Community';
+import AdminRoom from './AdminRoom';
 
 function App() {
   const [page, setPage] = useState('home');
@@ -18,6 +22,60 @@ function App() {
   });
   const [SignIn, setShowSignIn] = useState(false);
   const [SignUp, setShowSignUp] = useState(false);
+
+  // Podaci za postove su sada ovde (u App) da bi ih delili Community i AdminRoom
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      author: "Marko",
+      avatar: "👨‍💻",
+      title: "Best resources for learning React?",
+      content: "Hello everyone! I am a beginner in React and looking for recommendations for good tutorials or courses. What would you recommend?",
+      likes: 15,
+      comments: 4,
+      tags: ["Help", "React"]
+    },
+    {
+      id: 2,
+      author: "Ana_Dev",
+      avatar: "👩‍🚀",
+      title: "My new portfolio site",
+      content: "I just finished redesigning my portfolio using Three.js and React. I would love to hear your thoughts!",
+      likes: 32,
+      comments: 8,
+      tags: ["Showcase", "ThreeJS"]
+    },
+    {
+      id: 3,
+      author: "CodeMaster",
+      avatar: "🧙‍♂️",
+      title: "Vite vs Create React App in 2024",
+      content: "Do you still use CRA or have you completely switched to Vite? What are your pros and cons?",
+      likes: 45,
+      comments: 23,
+      tags: ["Discussion", "Tools"]
+    }
+  ]);
+
+  const handleAddPost = (postData) => {
+    const newPost = {
+      id: posts.length + 1,
+      author: user || "Guest",
+      avatar: user === 'admin' ? "🛡️" : "👤",
+      title: postData.title || "New Topic",
+      content: postData.content,
+      likes: 0,
+      comments: 0,
+      tags: ["General"]
+    };
+    setPosts([newPost, ...posts]);
+  };
+
+  const handleDeletePost = (id) => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      setPosts(posts.filter(post => post.id !== id));
+    }
+  };
 
   const handleSignIn = (username, password) => {
     if (username === 'admin' && password === 'admin') {
@@ -79,12 +137,14 @@ function App() {
         onNavigate={setPage}
       />
       <div className="modern-content">
-        {page === 'home' && <h1>Welcome, {user}!</h1>}
+        {page === 'home' && <Home onNavigate={setPage} />}
         {page === 'contact' && <Contact />}
         {page === 'about' && <About />}
-        {(page === 'community' || page === 'blog') && <h1>{page.charAt(0).toUpperCase() + page.slice(1)} section coming soon!</h1>}
+        {page === 'blog' && <Blog />}
+        {page === 'community' && <Community posts={posts} onAddPost={handleAddPost} />}
+        {page === 'admin' && <AdminRoom posts={posts} onAddPost={handleAddPost} onDeletePost={handleDeletePost} />}
       </div>
-      <Footer onNavigate={setPage} />
+      <Footer onNavigate={setPage} user={user} />
     </div>
   );
 }
